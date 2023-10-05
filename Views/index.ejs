@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E.M.S</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .card {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #000000;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .header {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="header">Employee Management System</h1>
+    </header>
+
+    <%- include ("Components/navbar.ejs") %>
+
+        <div class="container">
+            <% data.forEach((employeeData)=> { %>
+                <div class="card">
+                    <div class="card-header">
+                        <h1>
+                            <%= employeeData.name %>
+                        </h1>
+                        <h3>Email: <%= employeeData.email %>
+                        </h3>
+                        <h3>Position: <%= employeeData.position %>
+                        </h3>
+                        <h3>Date of Birth: <%= employeeData.dob %>
+                        </h3>
+                        <button class=" btn btn-success">
+                            <a class="text-white text-decoration-none" href="/edit/<%= employeeData.id %>">Edit</a>
+                        </button>
+                        <button class=" btn btn-danger">
+                            <a class="text-white text-decoration-none" href="/delete/<%- employeeData.id %>">Delete</a>
+                        </button>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+</body>
+
+</html>
